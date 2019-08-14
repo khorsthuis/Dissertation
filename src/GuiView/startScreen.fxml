@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiView.MainPageController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="600.0" />
+      <SplitPane dividerPositions="0.15" prefHeight="160.0" prefWidth="200.0">
+        <items>
+          <AnchorPane maxWidth="100.0" minWidth="100.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Menu 1">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="addSeller" mnemonicParsing="false" onAction="#handleAddSellerButton" prefWidth="100.0" text="Add Seller">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="addBuyer" mnemonicParsing="false" onAction="#handleAddBuyerButton" prefWidth="100.0" text="Add Buyer">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <SplitPane dividerPositions="0.5">
+               <items>
+                  <VBox>
+                     <children>
+                        <Label text="Available Jobs">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="75.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="350.0">
+                           <content>
+                              <TableView fx:id="jobTableView">
+                                <columns>
+                                  <TableColumn fx:id="jobNameColumn" prefWidth="110.0" text="Seller Name" />
+                                  <TableColumn fx:id="jobCapacityColumn" prefWidth="110.0" text="Capacity" />
+                                    <TableColumn fx:id="jobPriceColumn" prefWidth="100.0" text="Min Price" />
+                                </columns>
+                                 <opaqueInsets>
+                                    <Insets top="10.0" />
+                                 </opaqueInsets>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <HBox>
+                           <children>
+                              <ChoiceBox fx:id="sellerChoiceBox" prefWidth="110.0" />
+                              <TextField fx:id="jobCapacity" prefWidth="110.0" promptText="Capacity" />
+                              <TextField fx:id="jobPrice" prefWidth="110.0" promptText="Min Price" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddJobButton" text="Add Job to Market" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label alignment="TOP_CENTER" text="Availlable Bids" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="75.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="350.0">
+                           <content>
+                              <TableView fx:id="bidTableView">
+                                <columns>
+                                  <TableColumn fx:id="bidNameColumn" prefWidth="110.0" text="Buyer Name" />
+                                  <TableColumn fx:id="bidCapacityColumn" prefWidth="110.0" text="Min Capacity" />
+                                    <TableColumn fx:id="bidPriceColumn" prefWidth="100.0" text="Price" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <HBox>
+                           <children>
+                              <ChoiceBox fx:id="buyerChoiceBox" prefWidth="110.0" />
+                              <TextField fx:id="bidCapacity" prefWidth="110.0" promptText="Min Capacity" />
+                              <TextField fx:id="bidPrice" prefWidth="110.0" promptText="Price" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets top="2.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#handleAddBidButton" text="Add Bid to Market" />
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+        </items>
+      </SplitPane>
+  </items>
+</SplitPane>
