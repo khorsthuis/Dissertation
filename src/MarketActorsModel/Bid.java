@@ -154,11 +154,12 @@ public class Bid {
 
     @Override
     public String toString() {
-        return "Bid{" +
-                "buyer=" + buyer.getName() +
-                ", maxPrice=" + maxPrice +
-                ", minCapacity=" + minCapacity +
-                "is matched = " + matched +"}" + "\n" +
-                "potential jobs: " + "\n" + jobs + "\n";
+        return buyer.getName();
+//        return "Bid{" +
+//                "buyer=" + buyer.getName() +
+//                ", maxPrice=" + maxPrice +
+//                ", minCapacity=" + minCapacity +
+//                "is matched = " + matched +"}" + "\n" +
+//                "potential jobs: " + "\n" + jobs + "\n";
     }
 }

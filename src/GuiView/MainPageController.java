@@ -28,6 +28,7 @@ public class MainPageController implements Initializable {
     @FXML private TableColumn<Job, Seller> jobNameColumn;
     @FXML private TableColumn<Job, Integer> jobCapacityColumn;
     @FXML private TableColumn<Job, Integer> jobPriceColumn;
+    @FXML private TableColumn<Job, Bid> jobPartnerColumn;
     // contents of bids table
     @FXML private TableView<Bid> bidTableView;
     @FXML private TableColumn<Bid, Buyer> bidNameColumn;
@@ -45,7 +46,7 @@ public class MainPageController implements Initializable {
     // buttons in menu
     @FXML private Button addSeller;
     @FXML private Button addBuyer;
-    @FXML private Button refresh;
+    @FXML private Button runAlgorithm;
 
     private Controller controller;
 
@@ -65,6 +66,7 @@ public class MainPageController implements Initializable {
         jobNameColumn.setCellValueFactory(new PropertyValueFactory<>("seller"));
         jobCapacityColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         jobPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        jobPartnerColumn.setCellValueFactory(new PropertyValueFactory<>("Partner"));
 
         jobTableView.setItems(controller.getJobs());
 
@@ -81,16 +83,18 @@ public class MainPageController implements Initializable {
 
     }
 
-    @FXML
+
+    /**
+     * Method that refreshes the tables and the choicebox values
+     */
     public void viewRefreshButton(){
         jobTableView.setItems(controller.getJobs());
         bidTableView.setItems(controller.getBids());
         sellerChoiceBox.setItems(controller.getSellers());
         buyerChoiceBox.setItems(controller.getBuyers());
-
     }
     /**
-     * Method takes the input from the textfields and returns a Job object that can be handled by the controller
+     * Method takes the input from the textfields creates a Job object that is stored by the controller
      *
      * If fields were left empty the method should initiate a pop-up window that tells the user to correct their input
      */
@@ -98,18 +102,19 @@ public class MainPageController implements Initializable {
     public void viewAddJobButton(){
         try {
             Seller seller = sellerChoiceBox.getValue();
-            int price = Integer.valueOf(jobPrice.getText());
-            int capacity = Integer.valueOf(jobCapacity.getText());
-
+            int price = Integer.valueOf(jobPrice.getText().trim());
+            int capacity = Integer.valueOf(jobCapacity.getText().trim());
+            // show popup window that job was added succesfully
             AlertWindow alertWindowSuccesfull = new AlertWindow();
             alertWindowSuccesfull.show("Job added succesfully", "The job was added to the market succesfully");
-
-            //System.out.println(String.format("Seller: %s price: %x capacity: %x", seller.getName(), price,capacity));
-
+            //construct job and save to controller
             Job newJob = new Job(seller, price, capacity);
             this.controller.controlAddJob(newJob);
             // update the table
             jobTableView.setItems(controller.getJobs());
+            // clear text-fields
+            jobCapacity.clear();
+            jobPrice.clear();
 
         } catch (Exception e) {
             AlertWindow alertWindowUnsuccesfull = new AlertWindow();
@@ -119,30 +124,30 @@ public class MainPageController implements Initializable {
     }
 
     /**
-     * Method takes the input from the textfields and returns a Bid object that can be handeled by the controller
+     * Method takes the input from the textfields creates a Bid object that is stored by the controller
      *
      * If fields were left empty the method should initiate a pop-up window that tells the user to correct their input
      */
     @FXML
-    public Bid viewAddBidButton(){
-        Bid newBid = null;
+    public void viewAddBidButton(){
         try {
             Buyer buyer = buyerChoiceBox.getValue();
-            int price = Integer.valueOf(bidPrice.getText());
-            int capacity = Integer.valueOf(bidCapacity.getText());
-
-            System.out.println(String.format("Buyer: %s price: %x capacity %x", buyer.getName(), price, capacity));
-            newBid = new Bid(buyer, price, capacity);
+            int price = Integer.valueOf(bidPrice.getText().trim());
+            int capacity = Integer.valueOf(bidCapacity.getText().trim());
+            //construct bid and save to controller
+            Bid newBid = new Bid(buyer, price, capacity);
             this.controller.controlAddBid(newBid);
             // update the table
             bidTableView.setItems(controller.getBids());
+            // clear text-fields
+            bidCapacity.clear();
+            bidPrice.clear();
 
         }catch(Exception e){
             AlertWindow alertWindowUnsuccesfull = new AlertWindow();
             alertWindowUnsuccesfull.show("Something went wrong","Something went wrong in adding the Bid to the market. \n" +
                     "please use only integer values for capacity and price. Also, make sure you select a Buyer");
         }
-        return newBid;
     }
 
     /**
@@ -182,13 +187,22 @@ public class MainPageController implements Initializable {
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Add Seller");
+            stage.setTitle("Add Buyer");
             stage.setScene(new Scene(root1, 530, 280));
             stage.show();
         } catch (IOException e) {
             AlertWindow alertWindow = new AlertWindow();
             alertWindow.show("something went wrong", "Something went wrong in opening the add buyer screen");
         }
+    }
+
+    /**
+     * Method that is ran when the "run algorithm" button is pressed. after completion tables should be updated and the partner
+     * should now be shown in the job table.
+     */
+    @FXML
+    public void viewRunAlgorithmButton(){
+        controller.controlRunAlgorithm();
     }
 
 

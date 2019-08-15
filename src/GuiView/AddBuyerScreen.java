@@ -27,6 +27,13 @@ public class AddBuyerScreen {
         this.controller = controller;
     }
 
+    /**
+     * Method that handles when the submit button is pressen in the add buyer screen. the relevant
+     * information is taken from the text-fields, a new object of Buyer is created and added to the market through
+     * use of the controller class.
+     *
+     * furthermore, all tables in the main screen are refreshed
+     */
     @FXML
     public void handleSubmitButtonPressed(){
         try {

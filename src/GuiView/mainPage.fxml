@@ -28,10 +28,6 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="refresh" mnemonicParsing="false" onAction="#viewRefreshButton" prefWidth="100.0" text="Refresh">
-                           <VBox.margin>
-                              <Insets top="3.0" />
-                           </VBox.margin></Button>
                         <Button fx:id="addSeller" mnemonicParsing="false" onAction="#viewAddSellerButton" prefWidth="100.0" text="Add Seller">
                            <VBox.margin>
                               <Insets top="3.0" />
@@ -42,6 +38,7 @@
                            </VBox.margin></Button>
                      </children>
                   </VBox>
+                  <Button fx:id="runAlgorithm" layoutY="200.0" mnemonicParsing="false" onAction="#viewRunAlgorithmButton" prefHeight="81.0" prefWidth="100.0" text="Run matching Algorithm" textAlignment="CENTER" wrapText="true" />
                </children>
             </AnchorPane>
             <SplitPane dividerPositions="0.5">
@@ -60,9 +57,10 @@
                            <content>
                               <TableView fx:id="jobTableView">
                                 <columns>
-                                  <TableColumn fx:id="jobNameColumn" prefWidth="110.0" text="Seller Name" />
-                                  <TableColumn fx:id="jobCapacityColumn" prefWidth="110.0" text="Capacity" />
-                                    <TableColumn fx:id="jobPriceColumn" prefWidth="100.0" text="Min Price" />
+                                  <TableColumn fx:id="jobNameColumn" text="Seller Name" />
+                                  <TableColumn fx:id="jobCapacityColumn" text="Capacity" />
+                                    <TableColumn fx:id="jobPriceColumn" text="Min Price" />
+                                    <TableColumn fx:id="jobPartnerColumn" text="Partner" />
                                 </columns>
                                  <opaqueInsets>
                                     <Insets top="10.0" />

@@ -25,21 +25,49 @@ public class Controller {
         this.market = market;
     }
 
-    public MainPageController getMainScreenController(){
-        return mainPageController;
+    /**
+     * Method that stores job Object in the marketplace.
+     */
+    public void controlAddJob(Job newJob){
+        this.market.addJob(newJob);
     }
-
-    public AddBuyerScreen getBuyerScreenController(){
-        return buyerScreenController;
-    }
-
-    public AddSellerScreen getSellerScreenController(){
-        return sellerScreenController;
-    }
-
 
     /**
-     * Method that updates all tables when called
+     Method that stores Bid Object in the marketplace.
+     */
+    public void controlAddBid(Bid newBid){
+        this.market.addBid(newBid);
+    }
+
+    /**
+     Method that stores Seller Object in the marketplace.
+     */
+    public void controlAddSeller(Seller newSeller){
+        this.market.addSeller(newSeller);
+    }
+    /**
+     Method that stores Buyer Object in the marketplace.
+     */
+    public void controlAddBuyer(Buyer newBuyer){
+        this.market.addBuyer(newBuyer);
+    }
+
+    /**
+     * Getter method for the MainScreenController used for controlling the corresponding fxml file
+     */
+    public MainPageController getMainScreenController(){ return mainPageController; }
+
+    /**
+     * Getter method for the BuyerScreenController used for controlling the corresponding fxml file
+     */
+    public AddBuyerScreen getBuyerScreenController(){ return buyerScreenController; }
+    /**
+     * Getter method for the SellerScreenController used for controlling the corresponding fxml file
+     */
+    public AddSellerScreen getSellerScreenController(){ return sellerScreenController;}
+
+    /**
+     * Method that updates all tables on the main screen with information from the market when called
      */
     public void controlRefreshTables(){
         mainPageController.viewRefreshButton();
@@ -93,31 +121,17 @@ public class Controller {
     }
 
     /**
-     * Method that stores job Object in the marketplace.
+     * Method that allows the algorithm to run and create matches between the different buyers and sellers.
+     * After completion of this algorithm, the tables are again updated to show the partners with wich the jobs were matched.
      */
-    public void controlAddJob(Job newJob){
-        this.market.addJob(newJob);
+    public void controlRunAlgorithm(){
+        market.matchBidsJobs();
+        market.arangeMarriages();
+        controlRefreshTables();
+        System.out.println(market.getAllJobs().get(0).getPartner());
     }
 
-    /**
-     Method that stores Bid Object in the marketplace.
-     */
-    public void controlAddBid(Bid newBid){
-       this.market.addBid(newBid);
-    }
 
-    /**
-     Method that stores Seller Object in the marketplace.
-     */
-    public void controlAddSeller(Seller newSeller){
-        this.market.addSeller(newSeller);
-    }
-    /**
-     Method that stores Buyer Object in the marketplace.
-     */
-    public void controlAddBuyer(Buyer newBuyer){
-        this.market.addBuyer(newBuyer);
-    }
 
 
 
