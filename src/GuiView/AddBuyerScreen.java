@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 public class AddBuyerScreen {
 
     private Controller controller;
-
     // fxml variables
     @FXML private Button submit;
     @FXML private Button cancelButton;
@@ -34,28 +33,27 @@ public class AddBuyerScreen {
             Buyer newBuyer;
             int newBuyerId = Integer.valueOf(Id.getText().trim());
             String newBuyerName = Name.getText().trim();
-            int newNumJobs = Integer.valueOf(numJobs.getText().trim());
-
             // conditional to check which constructor to use
             if(numJobs.getText().trim().isEmpty()) {
                 newBuyer = new Buyer(newBuyerId, newBuyerName);
             }else{
+                int newNumJobs = Integer.valueOf(numJobs.getText().trim());
                 newBuyer = new Buyer(newBuyerId,newBuyerName,newNumJobs);
             }
-
-            System.out.println("New buyer added" + newBuyer);
-            // show text indicating seller was added successful
+            controller.controlAddBuyer(newBuyer);
+            // show text indicating buyer was added successful
             showBuyerAdded();
             // clear the text after successful completion
             Name.clear();
             Id.clear();
-
+            numJobs.clear();
+            // refresh tables after adding
+            controller.controlRefreshTables();
         } catch(Exception e){
             AlertWindow alertWindow = new AlertWindow();
             alertWindow.show("Invalid information", "The information you have provided was incorrect" + "\n" +
                     "Please try again");
         }
-
     }
 
     /**

@@ -52,7 +52,6 @@ public class Market {
      * Method that matches bids with jobs that exist in the market if the requirements of the bid's
      * meet up with the capacity price of the job
      */
-
     public void matchBidsJobs(){
         for(Job job : allJobs){
             for(Bid bid : allBids){

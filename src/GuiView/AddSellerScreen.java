@@ -36,15 +36,16 @@ public class AddSellerScreen {
             int newSellerId = Integer.valueOf(Id.getText().trim());
             String newSellerName = Name.getText().trim();
 
+            // construct and add seller to market
             Seller newSeller = new Seller(newSellerId, newSellerName);
-
-            System.out.println("New seller added" + newSeller);
+            controller.controlAddSeller(newSeller);
             // show text indicating seller was added successful
             showSellerAdded();
             // clear the text after successful completion
             Name.clear();
             Id.clear();
-
+            // refresh all tables
+            controller.controlRefreshTables();
         } catch(Exception e){
             AlertWindow alertWindow = new AlertWindow();
             alertWindow.show("Invalid information", "The information you have provided was incorrect" + "\n" +
@@ -55,10 +56,6 @@ public class AddSellerScreen {
 
     public void showSellerAdded(){
         successfulMessage.setText("Seller was added successfully");
-    }
-
-    public void showBuyerAdded(){
-        successfulMessage.setText("Buyer was added successfully");
     }
 
     @FXML

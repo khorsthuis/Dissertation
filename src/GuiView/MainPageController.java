@@ -81,6 +81,14 @@ public class MainPageController implements Initializable {
 
     }
 
+    @FXML
+    public void viewRefreshButton(){
+        jobTableView.setItems(controller.getJobs());
+        bidTableView.setItems(controller.getBids());
+        sellerChoiceBox.setItems(controller.getSellers());
+        buyerChoiceBox.setItems(controller.getBuyers());
+
+    }
     /**
      * Method takes the input from the textfields and returns a Job object that can be handled by the controller
      *
@@ -100,6 +108,8 @@ public class MainPageController implements Initializable {
 
             Job newJob = new Job(seller, price, capacity);
             this.controller.controlAddJob(newJob);
+            // update the table
+            jobTableView.setItems(controller.getJobs());
 
         } catch (Exception e) {
             AlertWindow alertWindowUnsuccesfull = new AlertWindow();
@@ -124,6 +134,8 @@ public class MainPageController implements Initializable {
             System.out.println(String.format("Buyer: %s price: %x capacity %x", buyer.getName(), price, capacity));
             newBid = new Bid(buyer, price, capacity);
             this.controller.controlAddBid(newBid);
+            // update the table
+            bidTableView.setItems(controller.getBids());
 
         }catch(Exception e){
             AlertWindow alertWindowUnsuccesfull = new AlertWindow();
@@ -139,8 +151,12 @@ public class MainPageController implements Initializable {
     @FXML
     public void viewAddSellerButton(){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addSellerScreen.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addSellerScreen.fxml"));
+            // set proper controller for the addSellerScreen
+            loader.setControllerFactory(c -> {
+                return controller.getSellerScreenController();
+            });
+            Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add Seller");
@@ -158,8 +174,12 @@ public class MainPageController implements Initializable {
     @FXML
     public void viewAddBuyerButton(){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addBuyerScreen.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addBuyerScreen.fxml"));
+            // set proper controller for the addBuyerScreen
+            loader.setControllerFactory(c -> {
+                return controller.getBuyerScreenController();
+            });
+            Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add Seller");

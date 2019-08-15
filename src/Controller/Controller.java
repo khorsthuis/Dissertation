@@ -13,19 +13,37 @@ import javafx.collections.ObservableList;
  * Controller class that couples the view (gui) with the logic (market Model)
  */
 public class Controller {
-    private MainPageController mainScreenController;
+    private MainPageController mainPageController;
     private AddBuyerScreen buyerScreenController;
     private AddSellerScreen sellerScreenController;
     private Market market;
 
     public Controller(Market market){
-        this.mainScreenController = new MainPageController(this);
+        this.mainPageController = new MainPageController(this);
         this.buyerScreenController = new AddBuyerScreen(this);
         this.sellerScreenController = new AddSellerScreen(this);
         this.market = market;
     }
 
+    public MainPageController getMainScreenController(){
+        return mainPageController;
+    }
 
+    public AddBuyerScreen getBuyerScreenController(){
+        return buyerScreenController;
+    }
+
+    public AddSellerScreen getSellerScreenController(){
+        return sellerScreenController;
+    }
+
+
+    /**
+     * Method that updates all tables when called
+     */
+    public void controlRefreshTables(){
+        mainPageController.viewRefreshButton();
+    }
     /**
      * Method that takes all bids existing in the market and returns them as an observableList
      * @return ObservableList of type bid to be read by the gui view controller
