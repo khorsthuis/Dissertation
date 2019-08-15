@@ -1,5 +1,6 @@
 package GuiView;
 
+import Controller.Controller;
 import MarketActorsModel.Bid;
 import MarketActorsModel.Buyer;
 import MarketActorsModel.Job;
@@ -46,104 +47,47 @@ public class MainPageController implements Initializable {
     @FXML private Button addBuyer;
     @FXML private Button refresh;
 
+    private Controller controller;
 
+    public MainPageController(Controller controller){
+        this.controller = controller;
+    }
 
 
     /**
      * Method that initialises the tables that show the bids and jobs that are posted to the market in a tabular
      * overview.
-     *
      * This method also initialises the contents of the choiceboxes
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
         // setting columns for Job table
         jobNameColumn.setCellValueFactory(new PropertyValueFactory<>("seller"));
         jobCapacityColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         jobPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        jobTableView.setItems(getJobs());
+        jobTableView.setItems(controller.getJobs());
 
         // setting collumns for Bid table
         bidNameColumn.setCellValueFactory(new PropertyValueFactory<>("buyer"));
         bidCapacityColumn.setCellValueFactory(new PropertyValueFactory<>("minCapacity"));
         bidPriceColumn.setCellValueFactory(new PropertyValueFactory<>("maxPrice"));
 
-        bidTableView.setItems(getBids());
+        bidTableView.setItems(controller.getBids());
 
         // setting sellers and buyers for choiceBoxes
-        sellerChoiceBox.setItems(getSellers());
-        buyerChoiceBox.setItems(getBuyers());
+        sellerChoiceBox.setItems(controller.getSellers());
+        buyerChoiceBox.setItems(controller.getBuyers());
 
     }
 
-
-
     /**
-     * Method that returns all the bid objects that exist in a market as an observable List
+     * Method takes the input from the textfields and returns a Job object that can be handled by the controller
      *
-     * @TODO: create method that returns the values for the contents of the market
-     *
-     * @return All the bids that have been posted to the marketplace as an ObservableList
-     */
-    public ObservableList<Bid> getBids(){
-        ObservableList<Bid> bids = FXCollections.observableArrayList();
-
-        bids.add(new Bid(new Buyer(12,"Pipo"), 45,100));
-        bids.add(new Bid(new Buyer(1,"barry"), 30,200));
-
-        return bids;
-    }
-
-    /**
-     * Method that returns all the Job objects that exist in a market as an observable List
-     *
-     * @TODO: create method that returns the values for the contents of the market
-     *
-     * @return All the Jobs that have been posted to the marketplace as an ObservableList
-     */
-    public ObservableList<Job> getJobs(){
-        ObservableList<Job> jobs = FXCollections.observableArrayList();
-
-        jobs.add(new Job(new Seller(1,"bob"),123,234));
-        jobs.add(new Job(new Seller(2,"Henk"),123,2434));
-
-        return jobs;
-    }
-
-    /**
-     * Method getting all the sellers that exist in the marketplace
-     * @return an observable arraylist for the choicebox Dropdown
-     */
-    public ObservableList<Seller> getSellers(){
-        ObservableList<Seller> sellers = FXCollections.observableArrayList();
-
-        sellers.add(new Seller(1,"Barry"));
-        sellers.add(new Seller(2,"Henk"));
-        sellers.add(new Seller(1,"Piet"));
-
-        return sellers;
-    }
-
-    /**
-     * Method getting all the Buyers that exist in the marketplace
-     * @return an observable arraylist for the choicebox Dropdown
-     */
-    public ObservableList<Buyer> getBuyers(){
-        ObservableList<Buyer> buyers = FXCollections.observableArrayList();
-
-        buyers.add(new Buyer(1,"Sarah"));
-        buyers.add(new Buyer(2,"Anna"));
-        buyers.add(new Buyer(3, "Jake"));
-
-        return buyers;
-    }
-
-    /**
-     * Method that saves the user input and adds the information contained in there as a job to the marketplace.
+     * If fields were left empty the method should initiate a pop-up window that tells the user to correct their input
      */
     @FXML
-    public void handleAddJobButton(){
+    public void viewAddJobButton(){
         try {
             Seller seller = sellerChoiceBox.getValue();
             int price = Integer.valueOf(jobPrice.getText());
@@ -155,67 +99,77 @@ public class MainPageController implements Initializable {
             //System.out.println(String.format("Seller: %s price: %x capacity: %x", seller.getName(), price,capacity));
 
             Job newJob = new Job(seller, price, capacity);
-        }catch (Exception e){
+            this.controller.controlAddJob(newJob);
+
+        } catch (Exception e) {
             AlertWindow alertWindowUnsuccesfull = new AlertWindow();
-            alertWindowUnsuccesfull.show("Something went wrong","Something went wrong in adding the job to the market. \n" +
+            alertWindowUnsuccesfull.show("Something went wrong", "Something went wrong in adding the job to the market. \n" +
                     "please use only integer values for capacity and price. Also, make sure you select a seller");
         }
     }
 
     /**
-     * Method that saves the user input and adds the information contained in there as a bid to the marketplace.
-     * It confirms the button was clicked by showing a pop-up window.
+     * Method takes the input from the textfields and returns a Bid object that can be handeled by the controller
+     *
      * If fields were left empty the method should initiate a pop-up window that tells the user to correct their input
      */
     @FXML
-    public void handleAddBidButton(){
+    public Bid viewAddBidButton(){
+        Bid newBid = null;
         try {
             Buyer buyer = buyerChoiceBox.getValue();
             int price = Integer.valueOf(bidPrice.getText());
             int capacity = Integer.valueOf(bidCapacity.getText());
 
             System.out.println(String.format("Buyer: %s price: %x capacity %x", buyer.getName(), price, capacity));
-            Bid newBid = new Bid(buyer, price, capacity);
+            newBid = new Bid(buyer, price, capacity);
+            this.controller.controlAddBid(newBid);
+
         }catch(Exception e){
             AlertWindow alertWindowUnsuccesfull = new AlertWindow();
             alertWindowUnsuccesfull.show("Something went wrong","Something went wrong in adding the Bid to the market. \n" +
                     "please use only integer values for capacity and price. Also, make sure you select a Buyer");
         }
+        return newBid;
     }
 
+    /**
+     * Method that handles the gui view change (opening of new window) when the add seller button is pressed.
+     */
     @FXML
-    public void handleAddSellerButton(){
-        try{
+    public void viewAddSellerButton(){
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addSellerScreen.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add Seller");
-            stage.setScene(new Scene(root1,530,280));
+            stage.setScene(new Scene(root1, 530, 280));
             stage.show();
-        }catch (IOException e) {
-            System.out.println("something went wrong in opening the addSeller Screen");
+        } catch (IOException e) {
+            AlertWindow alertWindow = new AlertWindow();
+            alertWindow.show("something went wrong", "Something went wrong in opening the add seller screen");
         }
     }
 
+    /**
+     * Method that handles the gui view change (opening of new window) when the add buyer button is pressed
+     */
     @FXML
-    public void handleAddBuyerButton(){
-        try{
+    public void viewAddBuyerButton(){
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("addBuyerScreen.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add Seller");
-            stage.setScene(new Scene(root1,530,280));
+            stage.setScene(new Scene(root1, 530, 280));
             stage.show();
-        }catch (IOException e) {
-            System.out.println("something went wrong in opening the addBuyerScreen");
+        } catch (IOException e) {
+            AlertWindow alertWindow = new AlertWindow();
+            alertWindow.show("something went wrong", "Something went wrong in opening the add buyer screen");
         }
     }
-
-
-
-
 
 
 }

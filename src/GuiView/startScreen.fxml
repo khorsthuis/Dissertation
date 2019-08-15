@@ -27,11 +27,11 @@
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin></Button>
-                        <Button fx:id="addSeller" mnemonicParsing="false" onAction="#handleAddSellerButton" prefWidth="100.0" text="Add Seller">
+                        <Button fx:id="addSeller" mnemonicParsing="false" onAction="#viewAddSellerButton" prefWidth="100.0" text="Add Seller">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin></Button>
-                        <Button fx:id="addBuyer" mnemonicParsing="false" onAction="#handleAddBuyerButton" prefWidth="100.0" text="Add Buyer">
+                        <Button fx:id="addBuyer" mnemonicParsing="false" onAction="#viewAddBuyerButton" prefWidth="100.0" text="Add Buyer">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin></Button>
@@ -75,7 +75,7 @@
                               <Insets bottom="2.0" top="2.0" />
                            </VBox.margin>
                         </HBox>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddJobButton" text="Add Job to Market" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewAddJobButton" text="Add Job to Market" />
                      </children>
                   </VBox>
                   <VBox>
@@ -112,7 +112,7 @@
                               <Insets bottom="2.0" top="2.0" />
                            </VBox.margin>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#handleAddBidButton" text="Add Bid to Market" />
+                        <Button mnemonicParsing="false" onAction="#viewAddBidButton" text="Add Bid to Market" />
                      </children>
                   </VBox>
                </items>

@@ -1,5 +1,7 @@
 package MarketActorsModel;
 
+import Tests.SellerTest;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -8,27 +10,42 @@ public class Market {
 
     private ArrayList<Job> allJobs;
     private ArrayList<Bid> allBids;
+    private ArrayList<Buyer> allBuyers;
+    private ArrayList<Seller> allSellers;
 
     public Market(){
         allJobs = new ArrayList<>();
         allBids = new ArrayList<>();
+        allBuyers = new ArrayList<>();
+        allSellers = new ArrayList<>();
     }
 
     /**
      * method allowing for jobs to be added to market
-     * @param newJob
      */
     public void addJob(Job newJob){
         allJobs.add(newJob);
     }
 
-
     /**
      * method allowing for bids to be added to market
-     * @param newBid
      */
     public void addBid(Bid newBid){
         allBids.add(newBid);
+    }
+
+    /**
+     * method allowing for Sellers to be added to market
+     */
+    public void addSeller(Seller newSeller){
+        allSellers.add(newSeller);
+    }
+
+    /**
+     * method allowing for Buyers to be added to market
+     */
+    public void addBuyer(Buyer newBuyer){
+        allBuyers.add(newBuyer);
     }
 
     /**
@@ -101,6 +118,14 @@ public class Market {
 
     public ArrayList<Bid> getAllBids() {
         return allBids;
+    }
+
+    public ArrayList<Buyer> getAllBuyers(){
+        return allBuyers;
+    }
+
+    public ArrayList<Seller> getAllSellers(){
+        return allSellers;
     }
 
     /**

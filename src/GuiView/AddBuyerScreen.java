@@ -1,5 +1,6 @@
 package GuiView;
 
+import Controller.Controller;
 import MarketActorsModel.Buyer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,13 +10,23 @@ import javafx.stage.Stage;
 
 public class AddBuyerScreen {
 
+    private Controller controller;
 
+    // fxml variables
     @FXML private Button submit;
     @FXML private Button cancelButton;
     @FXML private TextField Id;
     @FXML private TextField Name;
     @FXML private TextField numJobs;
     @FXML private Label successfulMessage;
+
+    /**
+     * Constructor method
+     @param controller main controller that holds the market object
+     */
+    public AddBuyerScreen(Controller controller){
+        this.controller = controller;
+    }
 
     @FXML
     public void handleSubmitButtonPressed(){
