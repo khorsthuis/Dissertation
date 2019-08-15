@@ -19,7 +19,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Market defaultMarket = new Market();
         Controller controller = new Controller(defaultMarket);
-        Parent root = FXMLLoader.load(getClass().getResource("startScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         primaryStage.setTitle("Cloud capacity Market");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
