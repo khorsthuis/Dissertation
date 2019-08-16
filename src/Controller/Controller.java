@@ -120,6 +120,7 @@ public class Controller {
         return buyers;
     }
 
+
     /**
      * Method that allows the algorithm to run and create matches between the different buyers and sellers.
      * After completion of this algorithm, the tables are again updated to show the partners with wich the jobs were matched.
@@ -128,7 +129,6 @@ public class Controller {
         market.matchBidsJobs();
         market.arangeMarriages();
         controlRefreshTables();
-        System.out.println(market.getAllJobs().get(0).getPartner());
     }
 
 

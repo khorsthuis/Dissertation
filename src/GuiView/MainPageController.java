@@ -34,6 +34,11 @@ public class MainPageController implements Initializable {
     @FXML private TableColumn<Bid, Buyer> bidNameColumn;
     @FXML private TableColumn<Bid, Integer> bidCapacityColumn;
     @FXML private TableColumn<Bid, Integer> bidPriceColumn;
+    @FXML private TableColumn<Bid, Integer> bidMinReliability;
+    @FXML private TableColumn<Bid, Integer> bidMinResponse;
+    @FXML private TableColumn<Bid, Integer> bidMinPerformance;
+    @FXML private TableColumn<Bid, Integer> bidMinAssurance;
+
     // text fields & choicebox for jobs
     @FXML private ChoiceBox<Seller> sellerChoiceBox;
     @FXML private TextField jobCapacity;
@@ -83,13 +88,15 @@ public class MainPageController implements Initializable {
 
     }
 
-
     /**
      * Method that refreshes the tables and the choicebox values
      */
+    @FXML
     public void viewRefreshButton(){
         jobTableView.setItems(controller.getJobs());
+        jobTableView.refresh();
         bidTableView.setItems(controller.getBids());
+        bidTableView.refresh();
         sellerChoiceBox.setItems(controller.getSellers());
         buyerChoiceBox.setItems(controller.getBuyers());
     }
@@ -105,10 +112,11 @@ public class MainPageController implements Initializable {
             int price = Integer.valueOf(jobPrice.getText().trim());
             int capacity = Integer.valueOf(jobCapacity.getText().trim());
             // show popup window that job was added succesfully
-            AlertWindow alertWindowSuccesfull = new AlertWindow();
-            alertWindowSuccesfull.show("Job added succesfully", "The job was added to the market succesfully");
+//            AlertWindow alertWindowSuccesfull = new AlertWindow();
+//            alertWindowSuccesfull.show("Job added succesfully", "The job was added to the market succesfully");
             //construct job and save to controller
             Job newJob = new Job(seller, price, capacity);
+
             this.controller.controlAddJob(newJob);
             // update the table
             jobTableView.setItems(controller.getJobs());
@@ -136,6 +144,16 @@ public class MainPageController implements Initializable {
             int capacity = Integer.valueOf(bidCapacity.getText().trim());
             //construct bid and save to controller
             Bid newBid = new Bid(buyer, price, capacity);
+
+            // if one of the fields is not empty --> add the minimum scores to the bid.
+//            if(!bidMinAssurance.getText().trim().isEmpty() || !bidMinPerformance.getText().trim().isEmpty() || !
+//                    bidMinReliability.getText().trim().isEmpty() || !bidMinResponse.getText().trim().isEmpty()){
+//                int minAssurance = Integer.valueOf(bidMinAssurance.getText().trim());
+//                int minPerformance = Integer.valueOf(bidMinPerformance.getText().trim());
+//                int minReliability = Integer.valueOf(bidMinReliability.getText().trim());
+//                int minResponse = Integer.valueOf(bidMinResponse.getText().trim());
+//            }
+
             this.controller.controlAddBid(newBid);
             // update the table
             bidTableView.setItems(controller.getBids());
