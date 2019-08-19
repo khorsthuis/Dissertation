@@ -70,6 +70,9 @@ public class AddBuyerScreen {
         successfulMessage.setText("Buyer was added successfully");
     }
 
+    /**
+     * Method that closes the screen once cancel button is pressed
+     */
     @FXML
     public void handleCancelButtonPressed() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();

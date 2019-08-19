@@ -23,7 +23,7 @@ public class Main extends Application {
         Parent root = loader.load();
         //Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
         primaryStage.setTitle("Cloud capacity Market");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
 

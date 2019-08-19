@@ -48,6 +48,8 @@ public class Buyer {
     }
 
 
+
+
     /**
      *  Equals method
      * @param o object with wich to be compared

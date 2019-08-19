@@ -7,6 +7,7 @@ public class Job implements Comparable<Job> {
     private int capacity;
     private boolean matched;
     private Bid partner;
+    private int finalPrice;
 
     /**
      * Public constructor for the job object
@@ -45,6 +46,10 @@ public class Job implements Comparable<Job> {
         return partner;
     }
 
+    public int getFinalPrice(){
+        return finalPrice;
+    }
+
     /**
      * Method that sets boolean to matched --> job has found a job and are now married
      * @param bid is the bid that is now set to be the new partner of the job.
@@ -52,6 +57,7 @@ public class Job implements Comparable<Job> {
     public void match(Bid bid){
         this.matched = true;
         this.partner = bid;
+        this.finalPrice = bid.getMaxPrice();
     }
 
     /**

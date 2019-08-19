@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiView.ViewBuyers">
+    <children>
+        <VBox>
+            <children>
+                <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButtonPressed" text="Close Window">
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                    </VBox.margin>
+                </Button>
+                <TableView fx:id="buyerTableView" prefHeight="550.0" prefWidth="770.0">
+                    <columns>
+                        <TableColumn fx:id="buyerIdColumn" prefWidth="91.0" text="Buyer ID" />
+                        <TableColumn fx:id="buyerNameColumn" prefWidth="126.0" text="Buyer Name" />
+                        <TableColumn fx:id="buyerNumBought" prefWidth="181.0" text="Number of Jobs Bought" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

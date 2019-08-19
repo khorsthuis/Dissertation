@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="280.0" maxWidth="530.0" minHeight="280.0" minWidth="530.0" prefHeight="280.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiView.AddSellerScreen">
    <children>
-      <VBox layoutX="200.0" layoutY="70.0" prefHeight="63.0" prefWidth="244.0">
+      <VBox layoutX="200.0" layoutY="40.0" prefHeight="63.0" prefWidth="244.0">
          <children>
             <TextField fx:id="Id" promptText="Please add new sellers id (int)">
                <VBox.margin>
@@ -29,8 +29,8 @@
             </TextField>
          </children>
       </VBox>
-      <Button fx:id="submit" layoutX="365.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleSubmitButtonPressed" text="Add Seller" />
-      <VBox layoutX="100.0" layoutY="70.0" prefHeight="63.0" prefWidth="100.0">
+      <Button fx:id="submit" layoutX="365.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSubmitButtonPressed" text="Add Seller" />
+      <VBox layoutX="100.0" layoutY="40.0" prefHeight="63.0" prefWidth="100.0">
          <children>
             <Label text="Seller ID:">
                <VBox.margin>
@@ -50,10 +50,42 @@
             </Label>
          </children>
       </VBox>
-      <Button fx:id="cancelButton" layoutX="100.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleCancelButtonPressed" text="Go Back" />
-      <Label fx:id="successfulMessage" layoutX="162.0" layoutY="147.0" textFill="RED">
+      <Button fx:id="cancelButton" layoutX="100.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCancelButtonPressed" text="Go Back" />
+      <Label fx:id="successfulMessage" layoutX="162.0" layoutY="200.0" textFill="RED">
          <font>
             <Font size="14.0" />
+         </font>
+      </Label>
+      <VBox layoutX="115.0" layoutY="132.0">
+         <children>
+            <HBox>
+               <children>
+                  <TextField fx:id="reliabilityScore" prefHeight="30.0" prefWidth="150.0" promptText="Reliability Score" />
+                  <TextField fx:id="responseScore" prefHeight="30.0" prefWidth="150.0" promptText="Response-time score">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <TextField fx:id="performanceScore" prefHeight="30.0" prefWidth="150.0" promptText="Performance Score" />
+                  <TextField fx:id="assuranceScore" prefHeight="30.0" prefWidth="150.0" promptText="Assurance Score">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="140.0" layoutY="115.0" text="Optional: provide scores in the range 0 - 100">
+         <font>
+            <Font size="12.0" />
          </font>
       </Label>
    </children>

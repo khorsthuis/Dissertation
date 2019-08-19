@@ -43,6 +43,8 @@ public class Seller implements Comparable<Seller> {
 
     public String getName(){ return this.name;}
 
+    public int getSellerId(){return this.sellerId;}
+
     /**
      * Setters for the different scores taking a integer value with the new score rather than a score object.
      * @param newScore
