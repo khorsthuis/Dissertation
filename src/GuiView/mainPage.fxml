@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <SplitPane dividerPositions="0.06354515050167224" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiView.MainPageController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0">
          <children>
             <Button fx:id="viewSellers" layoutX="100.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewAllSellersButton" text="View Sellers" />
             <Button layoutX="196.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewAllBuyersButton" text="View Buyers" />
+            <Button layoutX="293.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewExample1" text="Example 1" />
+            <Button layoutX="376.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewExample2" text="Example 2" />
          </children></AnchorPane>
       <SplitPane dividerPositions="0.15" prefHeight="160.0" prefWidth="200.0">
         <items>

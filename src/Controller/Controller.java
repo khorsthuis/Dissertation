@@ -6,8 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 
-import java.security.SecureRandom;
-
 
 /**
  * Controller class that couples the view (gui) with the logic (market Model)
@@ -208,6 +206,57 @@ public class Controller {
         }
         // refresh tables
         mainPageController.viewRefreshButton();
+    }
+
+    /**
+     * Method that is solely for presentation purposes and prevents the examples to be inputted manually
+     */
+    public void example1(){
+        market.clearMarket();
+        // adding persons for example 1
+        Seller alice = new Seller(1,"Alice");
+        Buyer bob = new Buyer(1,"Bob");
+        Buyer clive = new Buyer(2,"Clive");
+        market.addSeller(alice);
+        market.addBuyer(bob);
+        market.addBuyer(clive);
+        // adding jobs to market
+        market.addJob(new Job(alice,8,80));
+        market.addJob(new Job(alice,15,120));
+        // adding bids to market
+        market.addBid(new Bid(bob,20,100));
+        market.addBid(new Bid(clive,25,100));
+
+        mainPageController.viewRefreshButton();
+
+    }
+
+    /**
+     * Method that is solely for presentation purposes and prevents the examples to be inputted manually
+     */
+    public void example2(){
+        market.clearMarket();
+        // adding persons for example 1
+        Seller alice = new Seller(1,"Alice");
+        alice.setAllScores(85,85,85,85);
+        Seller dereck = new Seller(2,"Dereck");
+        dereck.setAllScores(62,62,62,62);
+        Buyer bob = new Buyer(1,"Bob",20);
+        Buyer clive = new Buyer(2,"Clive",0);
+
+        market.addSeller(alice);
+        market.addSeller(dereck);
+        market.addBuyer(bob);
+        market.addBuyer(clive);
+        // adding jobs to market
+        market.addJob(new Job(alice,10,100));
+        market.addJob(new Job(dereck,10,100));
+        // adding bids to market
+        market.addBid(new Bid(bob,20,100));
+        market.addBid(new Bid(clive,20,100));
+
+        mainPageController.viewRefreshButton();
+
     }
 
 

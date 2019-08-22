@@ -22,7 +22,7 @@ public class Main extends Application {
         });
         Parent root = loader.load();
         //Parent root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
-        primaryStage.setTitle("Cloud capacity Market");
+        primaryStage.setTitle("Cloud capacity Market Simulator");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }

@@ -1,7 +1,5 @@
 package MarketActorsModel;
 
-import Tests.SellerTest;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -107,9 +105,17 @@ public class Market {
     }
 
     /**
+     * Method that clears all the contents of the market
+     */
+    public void clearMarket(){
+        allBids = new ArrayList<>();
+        allJobs = new ArrayList<>();
+        allSellers = new ArrayList<>();
+        allBuyers = new ArrayList<>();
+    }
+
+    /**
      * Getters for allBids and allJobs for market object
-     *
-     * @return
      */
     public ArrayList<Job> getAllJobs() {
         return allJobs;
@@ -144,7 +150,6 @@ public class Market {
 
     /**
      * Tostring method returning the contents of the complete market as a string
-     * @return
      */
     @Override
     public String toString(){

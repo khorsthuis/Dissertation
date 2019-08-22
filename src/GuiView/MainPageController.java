@@ -5,7 +5,6 @@ import MarketActorsModel.Bid;
 import MarketActorsModel.Buyer;
 import MarketActorsModel.Job;
 import MarketActorsModel.Seller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -125,8 +124,8 @@ public class MainPageController implements Initializable {
     public void viewAddJobButton(){
         try {
             Seller seller = sellerChoiceBox.getValue();
-            int price = Integer.valueOf(jobPrice.getText().trim());
-            int capacity = Integer.valueOf(jobCapacity.getText().trim());
+            int price = Integer.parseInt(jobPrice.getText().trim());
+            int capacity = Integer.parseInt(jobCapacity.getText().trim());
             //construct job and save to controller
             Job newJob = new Job(seller, price, capacity);
 
@@ -308,6 +307,21 @@ public class MainPageController implements Initializable {
     @FXML
     public void viewGenerateRandomBids(){
         controller.generateAddRandomBids();
+    }
+
+    /**
+     * Method that calls the controller method that loads in the data for example 1.
+     */
+    @FXML
+    public void viewExample1(){
+        controller.example1();
+    }
+    /**
+     * Method that calls the controller method that loads in the data for example 2.
+     */
+    @FXML
+    public void viewExample2(){
+        controller.example2();
     }
 
 
