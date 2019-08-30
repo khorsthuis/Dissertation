@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<SplitPane dividerPositions="0.06354515050167224" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuiView.MainPageController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0">
+         <children>
+            <Button fx:id="viewSellers" layoutX="100.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewAllSellersButton" text="View Sellers" />
+            <Button layoutX="196.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewAllBuyersButton" text="View Buyers" />
+            <Button layoutX="293.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewExample1" text="Example 1" />
+            <Button layoutX="376.0" layoutY="4.0" mnemonicParsing="false" onAction="#viewExample2" text="Example 2" />
+         </children></AnchorPane>
+      <SplitPane dividerPositions="0.15" prefHeight="160.0" prefWidth="200.0">
+        <items>
+          <AnchorPane maxWidth="100.0" minWidth="100.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="addSeller" mnemonicParsing="false" onAction="#viewAddSellerButton" prefWidth="100.0" text="Add Seller">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="addBuyer" mnemonicParsing="false" onAction="#viewAddBuyerButton" prefWidth="100.0" text="Add Buyer">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+                  <Button fx:id="runAlgorithm" layoutY="200.0" mnemonicParsing="false" onAction="#viewRunAlgorithmButton" prefHeight="81.0" prefWidth="100.0" text="Run matching Algorithm" textAlignment="CENTER" wrapText="true" />
+                  <VBox layoutY="453.0" prefHeight="103.0" prefWidth="100.0" />
+               </children>
+            </AnchorPane>
+            <SplitPane dividerPositions="0.44157303370786516">
+               <items>
+                  <VBox>
+                     <children>
+                        <Label text="Available Jobs">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="100.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="350.0">
+                           <content>
+                              <TableView fx:id="jobTableView">
+                                <columns>
+                                  <TableColumn fx:id="jobNameColumn" prefWidth="85.0" text="Seller Name" />
+                                  <TableColumn fx:id="jobCapacityColumn" prefWidth="65.0" text="Capacity" />
+                                    <TableColumn fx:id="jobPriceColumn" prefWidth="65.0" text="Min Price" />
+                                    <TableColumn fx:id="jobPartnerColumn" prefWidth="65.0" text="Partner" />
+                                    <TableColumn fx:id="jobFinalPrice" prefWidth="90.0" text="Winning Bid" />
+                                </columns>
+                                 <opaqueInsets>
+                                    <Insets top="10.0" />
+                                 </opaqueInsets>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <HBox>
+                           <children>
+                              <ChoiceBox fx:id="sellerChoiceBox" prefWidth="110.0" />
+                              <TextField fx:id="jobCapacity" prefWidth="110.0" promptText="Capacity" />
+                              <TextField fx:id="jobPrice" prefWidth="110.0" promptText="Min Price" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#viewAddJobButton" text="Add Job to Market" />
+                           </children>
+                        </HBox>
+                        <AnchorPane prefHeight="98.0" prefWidth="389.0">
+                           <children>
+                              <Button layoutX="207.0" layoutY="64.0" mnemonicParsing="false" onAction="#viewGenerateRandomJobs" prefHeight="27.0" prefWidth="175.0" text="add 10 random jobs" textFill="RED" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label alignment="TOP_CENTER" text="Availlable Bids" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="165.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="350.0">
+                           <content>
+                              <TableView fx:id="bidTableView">
+                                <columns>
+                                  <TableColumn fx:id="bidNameColumn" prefWidth="85.0" text="Buyer Name" />
+                                  <TableColumn fx:id="bidCapacityColumn" prefWidth="65.0" text="Capacity" />
+                                    <TableColumn fx:id="bidPriceColumn" prefWidth="65.0" text="Price" />
+                                    <TableColumn fx:id="bidMinReliability" prefWidth="65.0" text="Reliability min" />
+                                    <TableColumn fx:id="bidMinResponse" prefWidth="65.0" text="Response min" />
+                                    <TableColumn fx:id="bidMinPerformance" prefWidth="65.0" text="Performance min" />
+                                    <TableColumn fx:id="bidMinAssurance" prefWidth="65.0" text="Assurance min" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <HBox>
+                           <children>
+                              <ChoiceBox fx:id="buyerChoiceBox" prefWidth="150.0" />
+                              <TextField fx:id="bidCapacity" prefWidth="150.0" promptText="Min Capacity" />
+                              <TextField fx:id="bidPrice" prefWidth="150.0" promptText="Price" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets top="2.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="2.0" top="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox prefHeight="63.0" prefWidth="341.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="minReliability" prefWidth="200.0" promptText="Min. Reliability (optional)" />
+                                    <TextField fx:id="minResponse" prefWidth="200.0" promptText="Min. Response-time (optional)" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="minPerformance" prefWidth="200.0" promptText="Min. Performance (optional)" />
+                                    <TextField fx:id="minAssurance" prefWidth="200.0" promptText="Min. Assurance (optional)" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#viewAddBidButton" text="Add Bid to Market" />
+                           </children>
+                        </HBox>
+                        <AnchorPane prefHeight="36.0" prefWidth="493.0">
+                           <children>
+                              <Button layoutX="304.0" layoutY="1.0" mnemonicParsing="false" onAction="#viewGenerateRandomBids" prefHeight="27.0" prefWidth="175.0" text="add 10 random bids" textFill="RED" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+        </items>
+      </SplitPane>
+  </items>
+</SplitPane>
