@@ -124,6 +124,18 @@ public class Market {
         allBids = new ArrayList<>();
         allJobs = new ArrayList<>();
     }
+    /**
+     * Method that clears all jobs from market
+     */
+    public void clearJobs(){
+        allJobs = new ArrayList<>();
+    }
+    /**
+     * Method that clears all bids from market
+     */
+    public void clearBids(){
+        allBids = new ArrayList<>();
+    }
 
     /**
      * Getters for allBids and allJobs for market object

@@ -339,5 +339,20 @@ public class MainPageController implements Initializable {
         controller.clearJobsBids();
     }
 
+    /**
+     * Method that clears all jobs from market
+     */
+    @FXML
+    public void clearJobs(){
+        controller.clearJobs();
+    }
+    /**
+     * Method that clears all bids from market
+     */
+    @FXML
+    public void clearBids(){
+        controller.clearBids();
+    }
+
 
 }

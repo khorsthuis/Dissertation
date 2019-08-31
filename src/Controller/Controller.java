@@ -275,5 +275,21 @@ public class Controller {
         mainPageController.viewRefreshButton();
     }
 
+    /**
+     * Method that clears all jobs from market
+     */
+    public void clearJobs(){
+        market.clearJobs();
+        mainPageController.viewRefreshButton();
+    }
+
+    /**
+     * Method that clears all Bids from market
+     */
+    public void clearBids(){
+        market.clearBids();
+        mainPageController.viewRefreshButton();
+    }
+
 
 }
