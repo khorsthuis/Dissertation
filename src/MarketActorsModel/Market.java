@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
+/**
+ * This class holds the central logid of the market
+ */
 public class Market {
 
     private ArrayList<Job> allJobs;
@@ -112,6 +115,14 @@ public class Market {
         allJobs = new ArrayList<>();
         allSellers = new ArrayList<>();
         allBuyers = new ArrayList<>();
+    }
+
+    /**
+     * Method that removes all bids and jobs from the market but keeps sellers and buyers
+     */
+    public void clearJobsBids(){
+        allBids = new ArrayList<>();
+        allJobs = new ArrayList<>();
     }
 
     /**

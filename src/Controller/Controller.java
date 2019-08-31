@@ -259,5 +259,19 @@ public class Controller {
 
     }
 
+    /**
+     * Method that clears all sellers and buyers from the market including their bids and jobs
+     */
+    public void clearAll(){
+        market.clearMarket();
+    }
+
+    /**
+     * Method that clears all bids and jobs from the market
+     */
+    public void clearJobsBids(){
+        market.clearJobsBids();
+    }
+
 
 }
