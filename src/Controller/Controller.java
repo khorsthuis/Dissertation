@@ -264,6 +264,7 @@ public class Controller {
      */
     public void clearAll(){
         market.clearMarket();
+        mainPageController.viewRefreshButton();
     }
 
     /**
@@ -271,6 +272,7 @@ public class Controller {
      */
     public void clearJobsBids(){
         market.clearJobsBids();
+        mainPageController.viewRefreshButton();
     }
 
 
