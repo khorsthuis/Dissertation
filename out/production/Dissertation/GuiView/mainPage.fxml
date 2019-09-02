@@ -30,15 +30,25 @@
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin></Button>
-                        <Button mnemonicParsing="false" onAction="#clearAll" prefWidth="100.0" text="Clear all">
+                        <Button mnemonicParsing="false" onAction="#clearAll" prefWidth="100.0" text="Clear All">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#clearJobsBids" prefHeight="30.0" prefWidth="100.0" text="Clear jobs/bids">
+                        <Button mnemonicParsing="false" onAction="#clearJobsBids" prefHeight="30.0" prefWidth="100.0" text="Clear Jobs/Bids">
                            <font>
                               <Font size="11.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clearJobs" prefWidth="100.0" text="Clear Jobs">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clearBids" prefWidth="100.0" text="Clear Bids">
                            <VBox.margin>
                               <Insets top="3.0" />
                            </VBox.margin>
