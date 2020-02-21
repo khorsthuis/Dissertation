@@ -10,4 +10,10 @@ sellers.
 In order to show the workings of the algorithm, a gui was created that lets users interact with the code and run simulations to see how
 the programatic logic handles different scenario's.
 
+# Usefull Locations:
+
 A .jar package can be found in under the Dissertation/out/artifacts/Dissertation_jar filepath. This can be ran to show the end-result of this code.
+
+The src/ folder contains the code and the Unit-tests for this project
+
+The algorithm that is central to this project can be found int the /src/MarketActorsModel/Market.java file
