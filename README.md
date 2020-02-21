@@ -10,3 +10,4 @@ sellers.
 In order to show the workings of the algorithm, a gui was created that lets users interact with the code and run simulations to see how
 the programatic logic handles different scenario's.
 
+A .jar package can be found in under the Dissertation/out/artifacts/Dissertation_jar filepath. This can be ran to show the end-result of this code.
